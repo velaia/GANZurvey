@@ -112,4 +112,4 @@ def save_result(data: list):
         pickle.dump(persist, file)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5001)
