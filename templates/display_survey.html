@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+VS GAN Survey
+{% endblock %}
+
+{% block content %}
+<p>❤ Thank your for participating in our survey! ❤</p>
+<!--<p>First there are a few instructions on how to participate. We also provide you with an example on how to fill out the-->
+<!--survey. Then we'll show you the images and ask you-->
+<!--to rank them.-->
+
+<!--TODO move the survey duration into a CONFIG variable-->
+Filling out the survey will take you about <strong>3
+    minutes</strong>.
+
+
+<h3>Instructions</h3>
+<p>For each of the following rows please click on the image that you think is most realistic.</p>
+<p><strong>Idea</strong>: If it's too close of a call you can also skip images.</p>
+<h3>Example</h3>
+<!-- TODO fill out-->
+<h3>Start of Survey</h3>
+<form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {% for x, radio in form.radios %}
+    <div class="row survey">
+        <div class="col l1">
+            <label>
+                <input type="radio" id="questions-{{ x }}-0" name="questions-{{ x }}" value="1">
+                <img class="drinkcard-cc" src="{{ img_path }}{{ form.imgs[x][1][0] }}/{{ images[form.imgs[x][0]] }}">
+            </label>
+        </div>
+        <div class="col l1">
+            <label>
+                <input type="radio" id="questions-{{ x }}-1" name="questions-{{ x}}" value="2">
+                <img class="drinkcard-cc" src="{{ img_path }}{{ form.imgs[x][1][1] }}/{{ images[form.imgs[x][0]] }}">
+            </label>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-mt-5">{{ form.submit }}</div>
+    </div>
+
+</form>
+{% endblock %}
+
