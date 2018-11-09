@@ -1,25 +1,21 @@
 {% extends 'base.html' %}
 
 {% block title %}
-VS GAN Survey
+Human Perception Test for Generated Bird Images
 {% endblock %}
 
 {% block content %}
 <p>❤ Thank your for participating in our survey! ❤</p>
-<!--<p>First there are a few instructions on how to participate. We also provide you with an example on how to fill out the-->
-<!--survey. Then we'll show you the images and ask you-->
-<!--to rank them.-->
 
-<!--TODO move the survey duration into a CONFIG variable-->
-Filling out the survey will take you about <strong>3
+Filling out the survey will take you about <strong>5
     minutes</strong>.
 
-
 <h3>Instructions</h3>
-<p>For each of the following rows please click on the image that you think is most realistic.</p>
-<p><strong>Idea</strong>: If it's too close of a call you can also skip images.</p>
-<h3>Example</h3>
-<!-- TODO fill out-->
+<p>For each of the following rows please click on the image that you think is most realistic. Make sure to select one
+    image per row and not to forget any. At the end of the survey press the Submit-button on the bottom right.<br/>You
+    should see a message 'Survey has been submitted.' afterwards.</p>
+
+
 <h3>Start of Survey</h3>
 <form method="POST" novalidate>
     {{ form.hidden_tag() }}
@@ -38,6 +34,7 @@ Filling out the survey will take you about <strong>3
             </label>
         </div>
     </div>
+    <hr />
     {% endfor %}
     <div class="row">
         <div class="col"></div>
