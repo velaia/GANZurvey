@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Human Perception Test for Generated Bird Images
+{% endblock %}
+
+{% block content %}
+<p>❤ Thank your for participating in our survey! ❤</p>
+
+Filling out the survey will take you about <strong>5
+    minutes</strong>.
+
+<h3>Instructions</h3>
+<p>For each of the following rows please click one of the two images on the right side that you think is most like the image on the left side. Make sure to select one
+    image per row and not to forget any. At the end of the survey press the Submit-button on the bottom right.<br/>You
+    should see a message 'Survey has been submitted.' afterwards.</p>
+
+
+<h3>Start of Survey</h3>
+<form method="POST" novalidate>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col"><h2>Ground-Truth</h2></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+    {{ form.hidden_tag() }}
+    {% for x, radio in form.radios %}
+    <div class="row survey">
+        <div class="col">
+            <label>
+                <img src="{{ img_path }}ground_truth/{{ images[form.imgs[x][0]][:-8] }}.jpg">
+            </label>
+        </div>
+        <div class="col l1">
+            <label>
+                <input type="radio" id="questions-{{ x }}-0" name="questions-{{ x }}" value="1">
+                <img class="drinkcard-cc" src="{{ img_path }}{{ form.imgs[x][1][0] }}/{{ images[form.imgs[x][0]] }}">
+            </label>
+        </div>
+        <div class="col l1">
+            <label>
+                <input type="radio" id="questions-{{ x }}-1" name="questions-{{ x}}" value="2">
+                <img class="drinkcard-cc" src="{{ img_path }}{{ form.imgs[x][1][1] }}/{{ images[form.imgs[x][0]] }}">
+            </label>
+        </div>
+    </div>
+    <hr/>
+    {% endfor %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-mt-5">{{ form.submit }}</div>
+    </div>
+
+</form>
+{% endblock %}
+

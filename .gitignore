@@ -2,5 +2,5 @@ __pycache__
 .idea
 flask_session
 results/*.pkl
-
+static/images/real*/**
 

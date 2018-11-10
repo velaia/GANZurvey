@@ -1495,6 +1495,18 @@ def display_survey():
     return render_template('display_survey.html', img_path=app.config['IMG_PATH'], form=form, images=images)
 
 
+@app.route('/gt', methods=[GET, POST])
+def display_survey_gt():
+    form = OneQuestionForm()
+    print('here')
+    if form.validate_on_submit():
+        flash(f'Survey has been submitted.')
+        save_result(form.questions.data)
+        return redirect(url_for('thank_you'))
+    session['permutations'] = form.imgs
+    return render_template('display_survey_gt.html', img_path=app.config['IMG_PATH'], form=form, images=images)
+
+
 @app.route('/thank_you', methods=[GET])
 def thank_you():
     return render_template('thank_you.html')
@@ -1516,7 +1528,7 @@ class OneQuestionForm(FlaskForm):
         super(OneQuestionForm, self).__init__()
 
 
-def save_result(data: list):
+def save_result(data: list, ground_truth: bool = False):
     perms = session['permutations']
     persist = {}
     for i in range(len(data)):
@@ -1527,7 +1539,8 @@ def save_result(data: list):
                 res = 1
             persist[perms[i][3]] = res
     print(persist)
-    with  open(f'results/result-{date.today()}-{datetime.now().time()}.pkl'.replace(':', '_'), 'wb') as file:
+    filename = f'results/result-{date.today()}-{datetime.now().time()}.pkl' if not ground_truth else f'results_gt/result-{date.today()}-{datetime.now().time()}.pkl'
+    with  open(filename.replace(':', '_'), 'wb') as file:
         pickle.dump(persist, file)
 
 
