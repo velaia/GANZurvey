@@ -1,11 +1,10 @@
 import json
 import glob
 import pickle
+from icecream import ic
 
 with open('config.json', 'r') as config_file:
     config = json.load(config_file)
-
-    print("IMG_PATH:" + config['IMG_PATH'])
 
     images = glob.glob("." + config["IMG_PATH"] + '/A/*.png')
 
@@ -14,3 +13,5 @@ with open('config.json', 'r') as config_file:
         image_dict[num] = images[i].split('/')[-1]
 
     pickle.dump(image_dict, open('image_dict.pkl', 'wb'))
+
+    ic(len(image_dict))

@@ -1,18 +1,19 @@
 import pickle
 import random
 from datetime import date, datetime
+import json
 
 import numpy as np
 from flask import Flask, render_template, flash, redirect, url_for, session
-from flask_session import Session
+# from flask_session import Session
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, RadioField, FieldList
 from wtforms.validators import Optional
 
 POST, GET = 'POST', 'GET'
 app = Flask(__name__)
-app.config.from_json('config.json')
-Session(app)
+app.config.from_file('config.json', load=json.load)
+# Session(app)
 
 cat_to_num = {'A': 1, 'B': 2}
 images = pickle.load(open('./image_dict.pkl', 'rb'))
@@ -56,7 +57,7 @@ class OneQuestionForm(FlaskForm):
 
     def __init__(self):
         self.rands = random.sample(range(0, NUM_IMAGES), app.config['NUM_QUESTIONS'])
-        self.imgs = [[rand, np.random.permutation(['A', 'B']), x, images[rand]] for x, rand in enumerate(self.rands, 1)]
+        self.imgs = [[rand, np.random.permutation(['A', 'B']).tolist(), x, images[rand]] for x, rand in enumerate(self.rands, 1)]
         # session['permutations'] = self.imgs
         super(OneQuestionForm, self).__init__()
 

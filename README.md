@@ -15,14 +15,14 @@ The purpose of this program is to offer a very simple online survey tool to (bli
 
 
 ## Original requirements
-* Tested with Python 3.8
+* Tested with Python 3.12.5
 * images with identical names in subdirectories of the same folder
 * images with identical name are compared to each other
 * there's a little text + image introduction to explain the program to the participants at the beginning of the page
 
 ## How it works
 ### Setup
-* create a virtual environment with python3.8 and pip installed. `python3.8 -m venv .venv && source .venv/bin/activate`
+* create a virtual environment with python3.12 and pip installed. `python3.12 -m venv .venv && source .venv/bin/activate`
 * install the requirements with pip: `pip3 install -r requirements.txt`
 * Put the images from your model into the A image subfolder, the ones of your comparison in the B subfolder. The names of the images  must be identical, e.g. for each PNG file in the A subfolder there must be a corresponding file in the B subfolder (see `static/images/real` folder structure for an example).
 * adjust the config.json `IMG_PATH` to point to your image (root) folder

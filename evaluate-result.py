@@ -1,9 +1,10 @@
 import pickle
 import glob
+from icecream import ic
 
 
-sum_correct = 0
-sum_overall = 0
+sum_correct, sum_overall = 0, 0
+
 for file in glob.glob('results/*.pkl'):
     result = pickle.load(open(file, 'rb'))
     for k, v in result.items():
@@ -12,4 +13,5 @@ for file in glob.glob('results/*.pkl'):
         if v == 1:
             sum_correct += 1
 
-print("Sum correct: " + str(sum_correct) + " of " + str(sum_overall))
+ic(sum_correct)
+ic(sum_overall)
