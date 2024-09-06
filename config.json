@@ -1,7 +1,6 @@
 {
   "SECRET_KEY": "3tq7j2gmpsew2sruz8diuczpgxi7b3h8xbtpcn4m",
-  "IMG_PATH": "/static/images/real2/",
-  "NUM_IMAGES": 2929,
-  "NUM_QUESTIONS": 100,
+  "IMG_PATH": "/static/images/real/",
+  "NUM_QUESTIONS": 20,
   "SESSION_TYPE": "filesystem"
 }
