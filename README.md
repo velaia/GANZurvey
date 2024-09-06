@@ -31,8 +31,13 @@ The purpose of this program is to offer a very simple online survey tool to (bli
 * execute the `generate-image-dict.py` script to generate the image dictionary from the images in your image folder. This is necessary for the program to work properly.
 
 ### Run the server
+#### On Dev environment
 * You can now run the server and send the survey link to your participants.
 * `python3 app.py`
+
+#### In production
+* Install gunicorn: `pip install gunicorn`
+* Run the server with gunicorn: `gunicorn -w 4 -b 0.0.0.0:80 app:app` (adjust the parameters to your liking)
 
 ### Evaluating the results
 * The results are stored under the `results` folder.
