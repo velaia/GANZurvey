@@ -12,6 +12,8 @@ The purpose of this program is to offer a very simple online survey tool to (bli
 * uses sessions to keep track of which image was selected by each user
 * easy setup
 
+* **Careful**: The image URLs contain information about the model (A or B) so an adversary could use that information in the HTML source code to cheat.
+
 
 ## Original requirements
 * Tested with Python 3.12.5
