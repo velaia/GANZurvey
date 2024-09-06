@@ -42,5 +42,5 @@ The purpose of this program is to offer a very simple online survey tool to (bli
 
 ## Story of the app
 
-This app can be used to generate **Human perceptual test** for genAI techniques and has been used in the perecptual test for the paper [MirrorGAN: Learning Text-to-image Generation by Redescription
+This app can be used to generate a **Human Perceptual Test** for genAI models and has been used in the human perecptual test featured in the paper [MirrorGAN: Learning Text-to-image Generation by Redescription
 ](https://ar5iv.labs.arxiv.org/html/1903.05854).
